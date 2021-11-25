@@ -3,7 +3,7 @@
     <v-row class="d-flex justify-center">
       <v-col cols="6" md="3" sm="6" xs="6">
         <v-text-field
-          label="New Shopping Item"
+          label="Add Item"
           outlined
           v-model="newItem"
           @keyup.enter.prevent="addItem"
@@ -42,6 +42,7 @@ export default {
   data() {
     return {
       ToDos: [],
+      id: 0,
       newItem: ""
     };
   },
@@ -53,15 +54,19 @@ export default {
     },
     async addItem() {
       if (this.newItem) {
-        await db.collection("ToDos").add({ name: this.newItem });
+        await db.collection("ToDos").add({ 
+          name: this.newItem,
+          sort: this.id
+        });
 
         this.newItem = "";
+        this.id++;
       }
     }
-  },
-  firestore: {
-    ToDos: db.collection("ToDos")
   }
+  // firestore: {
+  //   ToDos: db.collection("ToDos")
+  // }
 };
 </script>
 
