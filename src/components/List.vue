@@ -1,7 +1,7 @@
 <template>
   <div class="pt-3">
     <v-row class="d-flex justify-center" v-if="superadmin">
-      <v-col cols="6" md="3" sm="6" xs="6">
+      <v-col cols="7" md="7" sm="7" xs="7">
         <v-text-field
           label="Add Item"
           outlined
@@ -12,7 +12,7 @@
       <v-col cols="1" md="1">
         <v-btn large color="primary" @click.prevent="addItem">Add</v-btn>
       </v-col>
-      <v-col cols="1" md="1">
+      <v-col cols="1" md="1" v-if="false">
         <v-btn large color="secondary" @click.prevent="generate()">Generate</v-btn>
       </v-col>
     </v-row>
@@ -161,9 +161,9 @@ export default {
   background: #444 !important;
   color: white !important;
 }
-.pending-card {
+/* .pending-card {
   max-height: 700px;
   max-width: 50%;
   overflow: auto;
-}
+} */
 </style>

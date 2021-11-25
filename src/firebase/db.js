@@ -12,8 +12,6 @@ const firebaseConfig = {
   appId: process.env.VUE_APP_APP_ID
 };
 
-console.log(process.env);
-
 export const db = firebase.initializeApp(firebaseConfig).firestore();
 
 // Export types that exists in Firestore
