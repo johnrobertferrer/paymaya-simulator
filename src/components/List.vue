@@ -57,7 +57,7 @@ export default {
         { id: 3, name: 'Cedric' },
         { id: 4, name: 'Ericka' }
       ],
-      superadmin: false
+      superadmin: true
     };
   },
   mounted() {

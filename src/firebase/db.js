@@ -4,13 +4,15 @@ import "firebase/firestore";
 // Get a Firestore instance
 
 const firebaseConfig = {
-  apiKey: "AIzaSyACipLSg8oA9Hrj-1Px-D4XlpajvgwMJ6Y",
-  authDomain: "vue-fire-todo-ff0b8.firebaseapp.com",
-  projectId: "vue-fire-todo-ff0b8",
-  storageBucket: "vue-fire-todo-ff0b8.appspot.com",
-  messagingSenderId: "330879785516",
-  appId: "1:330879785516:web:79f97d9c57b2396d850f89"
+  apiKey: process.env.VUE_APP_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  projectId: process.env.VUE_APP_PROJECTED_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID
 };
+
+console.log(process.env);
 
 export const db = firebase.initializeApp(firebaseConfig).firestore();
 
