@@ -9,7 +9,9 @@
 
             <v-spacer></v-spacer>
 
-            <v-chip color="secondary" label>{{ roomName }}</v-chip>
+            <v-chip color="secondary" label>
+                {{ roomName }}
+            </v-chip>
         </v-toolbar>
 
         <v-navigation-drawer v-model="drawer" absolute bottom temporary>
@@ -58,7 +60,7 @@ export default {
     },
     computed: {
         roomName() {
-            return "Passcode: " + this.$root.passcode;
+            return 'Code: ' + this.$root.passcode;
         },
     },
 };

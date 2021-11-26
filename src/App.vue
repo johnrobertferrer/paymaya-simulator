@@ -4,7 +4,7 @@
             <router-view></router-view>
         </Navigation>
 
-        <v-content>
+        <v-content v-if="$route.path.includes('login')">
             <keep-alive :include="['Login']">
                 <router-view></router-view>
             </keep-alive>
