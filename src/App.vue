@@ -1,25 +1,24 @@
 <template>
-  <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <h2>PayMaya Simulator</h2>
-      </div>
-      <v-spacer></v-spacer>
-    </v-app-bar>
+    <v-app>
+        <Navigation v-if="!$route.path.includes('login')">
+            <router-view></router-view>
+        </Navigation>
 
-    <v-content>
-      <List />
-    </v-content>
-  </v-app>
+        <v-content>
+            <keep-alive :include="['Login']">
+                <router-view></router-view>
+            </keep-alive>
+        </v-content>
+    </v-app>
 </template>
 
 <script>
-import List from "./components/List";
+import Navigation from "./components/Navigation.vue";
+
 export default {
-  name: "App",
-  components: {
-    List,
-  },
-  data: () => ({}),
+    name: "App",
+    components: {
+        Navigation,
+    },
 };
 </script>

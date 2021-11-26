@@ -1,4 +1,4 @@
-# vue-firebase-todo
+# PayMaya Guide
 
 ## Project setup
 ```
