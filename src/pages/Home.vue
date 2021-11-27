@@ -22,17 +22,17 @@
                             class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="2">
+                                <v-col class="ticket-id">
                                     <v-list-item-title class="title green lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="8">
+                                <v-col>
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="2">
+                                <v-col class="arrow-button">
                                     <v-btn icon color="green" @click.native="moveItem(item.id, 'right')">
                                         <v-icon>mdi-arrow-right</v-icon>
                                     </v-btn>
@@ -64,17 +64,17 @@
                             class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="2">
+                                <v-col class="ticket-id">
                                     <v-list-item-title class="title red lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="8">
+                                <v-col>
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="2">
+                                <v-col class="arrow-button">
                                     <v-btn icon color="red" @click.native="moveItem(item.id, 'left')">
                                         <v-icon>mdi-arrow-left</v-icon>
                                     </v-btn>
@@ -176,5 +176,13 @@ export default {
     .row {
         margin-left: 0px;
         margin-right: 0px;
+    }
+
+    .ticket-id {
+        max-width: 100px;
+    }
+
+    .arrow-button {
+        max-width: 80px;
     }
 </style>
