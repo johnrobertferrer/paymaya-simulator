@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <v-row>
-            <v-col cols="12" md="6" class="green lighten-3 py-8 px-8 px-md-12">
+            <v-col cols="12" md="6" class="green lighten-3 py-6 px-8 px-md-12">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Waiting
@@ -43,7 +43,7 @@
                 </draggable>
             </v-col>
 
-            <v-col cols="12" md="6" class="red lighten-3 py-8 px-8 px-md-12">
+            <v-col cols="12" md="6" class="red lighten-3 py-6 px-8 px-md-12">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Done
