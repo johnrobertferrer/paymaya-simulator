@@ -18,9 +18,9 @@
             <center>
                 <v-img
                     src="./../assets/logo.png"
-                    class="navbar__logo"
+                    class="navbar__logo mt-4"
                 />
-                <v-chip color="secondary" class="mb-2" label>
+                <v-chip color="secondary" class="mb-3" label>
                     {{ roomcode }}
                 </v-chip>
                 <br>
@@ -38,8 +38,8 @@
                 </v-list-item>
             </v-list>
 
-            <template v-slot:append>
-                <div class="pa-2 mb-4 mx-2">
+            <template>
+                <div class="pa-2 mt-6 mx-2">
                     <v-btn block color="secondary" @click="logout">
                         Logout
                     </v-btn>
@@ -88,7 +88,6 @@ export default {
 
 .navbar__logo {
     width: 90%;
-    margin-top: 10px;
 }
 
 .toolbar {

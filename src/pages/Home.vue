@@ -34,7 +34,7 @@
                                     </v-list-item-title>
                                 </v-col>
                                 <v-col cols="2">
-                                    <v-btn icon color="green" @click="move(item.id, 'right')">
+                                    <v-btn icon color="green" @click.native="move(item.id, 'right')">
                                         <v-icon>mdi-arrow-right</v-icon>
                                     </v-btn>
                                 </v-col>
@@ -77,7 +77,7 @@
                                     </v-list-item-title>
                                 </v-col>
                                 <v-col cols="2">
-                                    <v-btn icon color="red" @click="move(item.id, 'left')">
+                                    <v-btn icon color="red" @click.native="move(item.id, 'left')">
                                         <v-icon>mdi-arrow-left</v-icon>
                                     </v-btn>
                                 </v-col>
