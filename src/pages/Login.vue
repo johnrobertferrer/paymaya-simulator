@@ -32,9 +32,13 @@
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" @click="validateRoomcode"
-                                    >Login</v-btn
+                                <v-btn color="secondary" disabled
+                                    >Create</v-btn
                                 >
+                                <v-btn color="primary" @click="validateRoomcode"
+                                    >Join</v-btn
+                                >
+                                
                             </v-card-actions>
                         </v-card>
                     </v-flex>
