@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <v-row>
-            <v-col cols="12" md="6" class="green lighten-3 px-6 px-md-10">
+            <v-col cols="12" md="6" class="green lighten-3 py-8 px-8 px-md-12">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Waiting
@@ -22,17 +22,17 @@
                             class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="1">
+                                <v-col cols="2">
                                     <v-list-item-title class="title green lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="10">
+                                <v-col cols="8">
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="1">
+                                <v-col cols="2">
                                     <v-btn icon color="green" @click.native="moveItem(item.id, 'right')">
                                         <v-icon>mdi-arrow-right</v-icon>
                                     </v-btn>
@@ -43,7 +43,7 @@
                 </draggable>
             </v-col>
 
-            <v-col cols="12" md="6" class="red lighten-3 px-6 px-md-10">
+            <v-col cols="12" md="6" class="red lighten-3 py-8 px-8 px-md-12">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Done
@@ -64,17 +64,17 @@
                             class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="1">
+                                <v-col cols="2">
                                     <v-list-item-title class="title red lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="10">
+                                <v-col cols="8">
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="1">
+                                <v-col cols="2">
                                     <v-btn icon color="red" @click.native="moveItem(item.id, 'left')">
                                         <v-icon>mdi-arrow-left</v-icon>
                                     </v-btn>
