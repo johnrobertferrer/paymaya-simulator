@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <v-row>
-            <v-col cols="12" md="6" class="green lighten-3">
+            <v-col cols="12" md="6" class="green lighten-3 px-6 px-md-10">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Waiting
@@ -19,22 +19,21 @@
                         :key="item.id"
                     >
                         <v-card
-                            class="mx-auto mb-2 text-center list-group-item"
-                            max-width="400"
+                            class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="2">
+                                <v-col cols="1">
                                     <v-list-item-title class="title green lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="8">
+                                <v-col cols="10">
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="2">
-                                    <v-btn icon color="green" @click.native="move(item.id, 'right')">
+                                <v-col cols="1">
+                                    <v-btn icon color="green" @click.native="moveItem(item.id, 'right')">
                                         <v-icon>mdi-arrow-right</v-icon>
                                     </v-btn>
                                 </v-col>
@@ -44,7 +43,7 @@
                 </draggable>
             </v-col>
 
-            <v-col cols="12" md="6" class="red lighten-3">
+            <v-col cols="12" md="6" class="red lighten-3 px-6 px-md-10">
                 <div class="list-group-item">
                     <v-list-item-title class="headline my-2 text-center font-weight-medium">
                         Done
@@ -62,22 +61,21 @@
                         :key="item.id"
                     >
                         <v-card
-                            class="mx-auto mb-2 text-center list-group-item"
-                            max-width="400"
+                            class="mx-auto mb-2 text-center"
                         >
                             <v-row>
-                                <v-col cols="2">
+                                <v-col cols="1">
                                     <v-list-item-title class="title red lighten-3">
                                         {{ item.id }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="8">
+                                <v-col cols="10">
                                     <v-list-item-title class="title">
                                         {{ item.name }}
                                     </v-list-item-title>
                                 </v-col>
-                                <v-col cols="2">
-                                    <v-btn icon color="red" @click.native="move(item.id, 'left')">
+                                <v-col cols="1">
+                                    <v-btn icon color="red" @click.native="moveItem(item.id, 'left')">
                                         <v-icon>mdi-arrow-left</v-icon>
                                     </v-btn>
                                 </v-col>
@@ -144,7 +142,7 @@ export default {
             this.waitingList = list.waiting;
             this.doneList = list.done;
         },
-        move(id, location) {
+        moveItem(id, location) {
             if (location == 'right') {
                 let data = this.waitingList.find(data => data.id == id);
                 this.waitingList = this.waitingList.filter(data => data.id != id);
