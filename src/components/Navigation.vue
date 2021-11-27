@@ -5,17 +5,28 @@
                 @click.stop="drawer = !drawer"
             ></v-app-bar-nav-icon>
 
-            <v-toolbar-title>PayMaya Guide</v-toolbar-title>
+            <v-toolbar-title>{{ $route.name }}</v-toolbar-title>
 
             <v-spacer></v-spacer>
 
-            <v-chip color="secondary" label>
-                {{ roomName }}
-            </v-chip>
+            <!-- <v-chip color="secondary" label>
+                {{ roomcode }}
+            </v-chip> -->
         </v-toolbar>
 
-        <v-navigation-drawer v-model="drawer" absolute bottom temporary>
-            <v-list>
+        <v-navigation-drawer v-model="drawer" absolute left temporary>
+            <center>
+                <v-img
+                    src="./../assets/logo.png"
+                    class="navbar__logo"
+                />
+                <v-chip color="secondary" class="mb-2" label>
+                    {{ roomcode }}
+                </v-chip>
+                <br>
+                <span class="text-md-body-1">{{ version }}</span>
+            </center>
+            <v-list class="mt-6">
                 <v-list-item v-for="item in items" :key="item.title" link>
                     <v-list-item-icon>
                         <v-icon>{{ item.icon }}</v-icon>
@@ -28,7 +39,7 @@
             </v-list>
 
             <template v-slot:append>
-                <div class="pa-2">
+                <div class="pa-2 mb-4 mx-2">
                     <v-btn block color="secondary" @click="logout">
                         Logout
                     </v-btn>
@@ -47,7 +58,7 @@ export default {
         return {
             drawer: false,
             items: [
-                { title: "Home", icon: "mdi-view-dashboard" },
+                { title: "Home", icon: "mdi-home" },
                 { title: "Players", icon: "mdi-account-box" },
                 { title: "Contact", icon: "mdi-gavel" },
             ],
@@ -59,9 +70,12 @@ export default {
         },
     },
     computed: {
-        roomName() {
-            return 'Code: ' + this.$root.passcode;
+        roomcode() {
+            return 'Code: ' + this.$root.roomcode;
         },
+        version() {
+            return 'Version ' + this.$root.version;
+        }
     },
 };
 </script>
@@ -70,6 +84,11 @@ export default {
 .v-toolbar__content {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.navbar__logo {
+    width: 90%;
+    margin-top: 10px;
 }
 
 .toolbar {

@@ -14,7 +14,7 @@
                     >Add</v-btn
                 >
             </v-col>
-            <v-col cols="1" md="1" v-if="false">
+            <v-col cols="1" md="1" v-if="true">
                 <v-btn large color="secondary" @click.prevent="generate()"
                     >Generate</v-btn
                 >
@@ -61,7 +61,7 @@ export default {
                 { id: 3, name: "Cedric" },
                 { id: 4, name: "Ericka" },
             ],
-            superadmin: true,
+            superadmin: false,
         };
     },
     mounted() {},

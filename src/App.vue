@@ -1,15 +1,14 @@
 <template>
-    <v-app>
+    <div class="wrapper">
         <Navigation v-if="!$route.path.includes('login')">
-            <router-view></router-view>
+            <router-view />
         </Navigation>
 
-        <v-content v-if="$route.path.includes('login')">
-            <keep-alive :include="['Login']">
-                <router-view></router-view>
-            </keep-alive>
-        </v-content>
-    </v-app>
+        <!-- LOGIN PAGE -->
+        <div class="login-wrapper" v-if="$route.path.includes('login')">
+            <router-view />
+        </div>
+    </div>
 </template>
 
 <script>
@@ -22,3 +21,9 @@ export default {
     },
 };
 </script>
+
+<style>
+html {
+    overflow: hidden;
+}
+</style>

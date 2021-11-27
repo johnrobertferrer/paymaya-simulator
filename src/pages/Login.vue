@@ -6,7 +6,7 @@
                     <v-flex xs12 sm8 md4>
                         <v-card class="elevation-12">
                             <v-toolbar dark color="primary">
-                                <v-toolbar-title>PayMaya Guide</v-toolbar-title>
+                                <v-toolbar-title>Paymaya Send Money Guide</v-toolbar-title>
                             </v-toolbar>
                             <v-card-text>
                                 <!-- <v-text-field
@@ -16,26 +16,23 @@
                                     type="text"
                                 ></v-text-field> -->
                                 <v-text-field
-                                    id="passcode"
+                                    id="roomcode"
                                     prepend-icon="mdi-lock"
-                                    name="passcode"
-                                    label="Passcode"
+                                    name="roomcode"
+                                    label="Room code"
                                     type="text"
-                                    v-model="passcode"
-                                    @keyup.enter.prevent="validatePasscode"
+                                    v-model="roomcode"
+                                    @keyup.enter.prevent="validateRoomcode"
                                     :rules="[
                                         () =>
-                                            !!passcode ||
-                                            'This field is required',
-                                        () =>
-                                            invalidPasscode == true ||
-                                            'Invalid passcode',
+                                            !!roomcode ||
+                                            'This field is required'
                                     ]"
                                 ></v-text-field>
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" @click="validatePasscode"
+                                <v-btn color="primary" @click="validateRoomcode"
                                     >Login</v-btn
                                 >
                             </v-card-actions>
@@ -51,23 +48,28 @@
 export default {
     name: "Login",
     data: () => ({
-        passcode: "",
-        invalidPasscode: true,
+        roomcode: "",
+        invalidRoomcode: true,
     }),
     methods: {
-        validatePasscode() {
-            if (this.passcode === "paymaya") {
-                this.$root.passcode = this.passcode;
+        validateRoomcode() {
+            if (this.validRoomCodes.includes(this.roomcode)) {
+                this.$root.roomcode = this.roomcode;
                 this.$router.push("/");
             } else {
-                this.invalidPasscode = false;
+                this.invalidRoomcode = false;
             }
         },
     },
     watch: {
-        passcode() {
-            this.invalidPasscode = true;
+        roomcode() {
+            this.invalidRoomcode = true;
         },
     },
+    computed: {
+        validRoomCodes() {
+            return this.$root.room.map(room => room.code);
+        }
+    }
 };
 </script>

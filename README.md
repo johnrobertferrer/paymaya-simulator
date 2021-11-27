@@ -1,4 +1,4 @@
-# PayMaya Guide
+# Paymaya Send Money Guide
 
 ## Project setup
 ```
