@@ -17,7 +17,8 @@
         <v-navigation-drawer v-model="drawer" absolute left temporary>
             <center>
                 <v-img
-                    src="./../assets/logo.png"
+                    lazy-src="@/assets/logo.png"
+                    src="@/assets/logo.png"
                     class="navbar__logo mt-4"
                 />
                 <v-chip color="secondary" class="mb-3" label>
