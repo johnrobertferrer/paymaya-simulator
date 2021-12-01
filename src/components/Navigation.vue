@@ -9,38 +9,39 @@
 
             <v-spacer></v-spacer>
 
-            <!-- <v-chip color="secondary" label>
-                {{ roomcode }}
-            </v-chip> -->
+            <!-- <v-btn icon>
+                <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn> -->
         </v-toolbar>
 
-        <v-navigation-drawer v-model="drawer" absolute left temporary>
-            <center>
+        <v-navigation-drawer id="navigation" v-model="drawer" absolute left temporary>
+            <v-list class="mt-6 flex align-center">
+                <center>
                 <v-img
                     lazy-src="@/assets/logo.png"
                     src="@/assets/logo.png"
-                    class="navbar__logo mt-4"
+                    class="navbar__logo my-6"
                 />
-                <v-chip color="secondary" class="mb-3" label>
-                    {{ roomcode }}
-                </v-chip>
-                <br>
-                <span class="text-md-body-1">{{ version }}</span>
-            </center>
+                </center>
+                <v-toolbar-title class="subtitle-1 text-center mb-3">{{ username }}</v-toolbar-title>
+                <v-toolbar-title class="subtitle-1 text-center mb-3">{{ roomcode }}</v-toolbar-title>
+                <v-toolbar-title class="subtitle-1 text-center mb-3">{{ version }}</v-toolbar-title>
+            </v-list>
             <v-list class="mt-6">
-                <v-list-item v-for="item in items" :key="item.title" link>
-                    <v-list-item-icon>
-                        <v-icon>{{ item.icon }}</v-icon>
-                    </v-list-item-icon>
-
-                    <v-list-item-content>
-                        <v-list-item-title>{{ item.title }}</v-list-item-title>
-                    </v-list-item-content>
-                </v-list-item>
+                <router-link :to="item.route" v-for="item in items" :key="item.title">
+                    <v-list-item link class="ml-8">
+                        <v-list-item-icon>
+                            <v-icon>{{ item.icon }}</v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title class="subtitle-1">{{ item.title }}</v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </router-link>
             </v-list>
 
             <template>
-                <div class="pa-2 mt-6 mx-2">
+                <div class="pa-2 mt-8 mx-2">
                     <v-btn block color="secondary" @click="logout">
                         Logout
                     </v-btn>
@@ -59,9 +60,9 @@ export default {
         return {
             drawer: false,
             items: [
-                { title: "Home", icon: "mdi-home" },
-                { title: "Players", icon: "mdi-account-box" },
-                { title: "Contact", icon: "mdi-gavel" },
+                { title: "Home", route: "/", icon: "mdi-home" },
+                { title: "Players", route: "/players", icon: "mdi-account" },
+                { title: "Logs", route: "/", icon: "mdi-folder-search" }
             ],
         };
     },
@@ -76,6 +77,9 @@ export default {
         },
         version() {
             return 'Version ' + this.$root.version;
+        },
+        username() {
+            return 'Name: ' + this.$root.username;
         }
     },
 };
@@ -87,8 +91,12 @@ export default {
     padding-right: 0px;
 }
 
+#navigation a {
+    text-decoration: none;
+}
+
 .navbar__logo {
-    width: 90%;
+    width:85%;
 }
 
 .toolbar {

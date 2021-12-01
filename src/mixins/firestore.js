@@ -20,6 +20,10 @@ export default {
                     console.log(error);
                 }); 
         },
+
+        afterUpdateRecord() {
+            return
+        }
     },
     firestore: {
         room: db.collection("room")
