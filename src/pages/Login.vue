@@ -34,8 +34,10 @@
                                     prepend-icon="mdi-lock"
                                     name="roomcode"
                                     label="Room code"
-                                    type="text"
                                     v-model="roomcode"
+                                    :type="showPasscode ? 'text' : 'password'"
+                                    :append-icon="showPasscode ? 'mdi-eye' : 'mdi-eye-off'"
+                                    @click:append="showPasscode = !showPasscode"
                                     @keyup.enter.prevent="validateRoomcode"
                                     :rules="[
                                         () =>
@@ -69,7 +71,8 @@ export default {
         roomcode: "",
         invalidRoomcode: true,
         errors: [],
-        processing: false
+        processing: false,
+        showPasscode: false
     }),
     methods: {
         validateRoomcode() {
