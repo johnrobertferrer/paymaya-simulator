@@ -9,12 +9,16 @@
 
             <v-spacer></v-spacer>
 
-            <v-btn icon v-show="isHomePage()" :disabled="isSuperadmin" @click.native="addPlayer()">
+            <v-btn icon v-show="isHomePage()" :disabled="!isSuperadmin" @click.native="addItem()">
                 <v-icon>mdi-plus</v-icon>
             </v-btn>
 
-            <v-btn icon v-show="isHomePage()" :disabled="isSuperadmin" @click.native="deleteItem()">
+            <v-btn icon v-show="isHomePage()" :disabled="!isSuperadmin" @click.native="deleteItem()">
                 <v-icon>mdi-delete</v-icon>
+            </v-btn>
+
+            <v-btn icon v-show="isHomePage()" :disabled="!isSuperadmin" @click.native="resetItems()">
+                <v-icon>mdi-close-circle</v-icon>
             </v-btn>
         </v-toolbar>
 
@@ -32,8 +36,8 @@
                 <v-toolbar-title class="subtitle-1 text-center mb-3">{{ version }}</v-toolbar-title>
             </v-list>
             <v-list class="mt-6">
-                <router-link :to="item.route" v-for="item in items" :key="item.title">
-                    <v-list-item link class="pl-12" :class="isDisabled(item) ? 'disabled' : ''">
+                <router-link :to="item.route" v-for="item in unrestrictedItems" :key="item.title">
+                    <v-list-item link class="pl-12">
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-icon>
@@ -66,7 +70,7 @@ export default {
             items: [
                 { title: "Home", route: "/", icon: "mdi-home" },
                 { title: "Players", route: "/players", icon: "mdi-account" },
-                { title: "Logs", route: "/", icon: "mdi-folder-search" }
+                { title: "Audit Logs", route: "/logs", icon: "mdi-folder-search" }
             ],
         };
     },
@@ -78,7 +82,22 @@ export default {
             return this.$router.currentRoute.name == 'Home';
         },
         isDisabled(item) {
-            return item.title === 'Logs';
+            return item.title === 'Audit Logs' && !this.isSuperadmin;
+        },
+        addItem() {
+            if (!this.isSuperadmin) { return }
+
+            this.$root.event = '';
+        },
+        deleteItem() {
+            if (!this.isSuperadmin) { return }
+
+            this.$root.event = '';
+        },
+        resetItems() {
+            if (!this.isSuperadmin) { return }
+
+            this.$root.event = 'resetItems';
         }
     },
     computed: {
@@ -93,6 +112,11 @@ export default {
         },
         isSuperadmin() {
             return this.$root.superadmin;
+        },
+        unrestrictedItems() {
+            return this.isSuperadmin
+                ? this.items
+                : this.items.filter(item => item.title !== 'Audit Logs');
         }
     },
 };
