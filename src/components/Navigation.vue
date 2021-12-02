@@ -9,9 +9,13 @@
 
             <v-spacer></v-spacer>
 
-            <!-- <v-btn icon>
-                <v-icon>mdi-dots-vertical</v-icon>
-            </v-btn> -->
+            <v-btn icon v-show="isHomePage()" :disabled="isSuperadmin" @click.native="addPlayer()">
+                <v-icon>mdi-plus</v-icon>
+            </v-btn>
+
+            <v-btn icon v-show="isHomePage()" :disabled="isSuperadmin" @click.native="deleteItem()">
+                <v-icon>mdi-delete</v-icon>
+            </v-btn>
         </v-toolbar>
 
         <v-navigation-drawer id="navigation" v-model="drawer" absolute left temporary>
@@ -29,7 +33,7 @@
             </v-list>
             <v-list class="mt-6">
                 <router-link :to="item.route" v-for="item in items" :key="item.title">
-                    <v-list-item link class="ml-8">
+                    <v-list-item link class="pl-12" :class="isDisabled(item) ? 'disabled' : ''">
                         <v-list-item-icon>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-item-icon>
@@ -70,6 +74,12 @@ export default {
         logout() {
             this.$router.push("/login");
         },
+        isHomePage() {
+            return this.$router.currentRoute.name == 'Home';
+        },
+        isDisabled(item) {
+            return item.title === 'Logs';
+        }
     },
     computed: {
         roomcode() {
@@ -80,6 +90,9 @@ export default {
         },
         username() {
             return 'Name: ' + this.$root.username;
+        },
+        isSuperadmin() {
+            return this.$root.superadmin;
         }
     },
 };
@@ -89,6 +102,11 @@ export default {
 .v-toolbar__content {
     padding-left: 0px;
     padding-right: 0px;
+}
+
+.disabled {
+    pointer-events:none; 
+    opacity:0.5; 
 }
 
 #navigation a {

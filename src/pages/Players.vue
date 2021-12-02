@@ -5,7 +5,7 @@
                 <v-subheader class="title">Total Players: {{ totalPlayers }}</v-subheader>
             </v-col>
             <v-col class="add-button-wrapper">
-                <v-btn color="red" class="lighthen-2" @click.native="addPlayer" :disabled="!isSuperadmin" block>
+                <v-btn color="red" class="lighthen-2" @click.native="addPlayer" :disabled="!isSuperadmin" block dark>
                     <v-icon>mdi-plus</v-icon>
                 </v-btn>
             </v-col>
@@ -78,6 +78,8 @@ export default {
             this.updateRecord(id, data);
         },
         addPlayer() {
+            if (!this.isSuperadmin) { return }
+
             let max = this.totalPlayers;
 
             if (max == 11) { 
@@ -89,6 +91,8 @@ export default {
             this.sync();
         },
         deletePlayer(id) {
+            if (!this.isSuperadmin) { return }
+
             let players = this.players.filter(player => player.id !== id);
 
             this.players = this.resetPlayerIds(players);
