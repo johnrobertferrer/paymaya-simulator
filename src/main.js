@@ -20,7 +20,7 @@ new Vue({
             roomcode: '',
             username: '',
             event: '',
-            version: '1.0.0.1',
+            version: '1.0.1.0',
             superadmin: false
         };
     },
