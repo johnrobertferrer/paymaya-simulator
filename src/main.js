@@ -19,7 +19,8 @@ new Vue({
         return {
             roomcode: '',
             username: '',
-            version: '1.0.0.0',
+            event: '',
+            version: '1.0.0.1',
             superadmin: false
         };
     },

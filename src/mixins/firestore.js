@@ -16,8 +16,8 @@ export default {
                 .then(() => {
                     that.afterUpdateRecord();
                 })
-                .catch((error) => {
-                    console.log(error);
+                .catch(() => {
+                    // console.log(error);
                 }); 
         },
 
