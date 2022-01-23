@@ -32,5 +32,5 @@ new Vue({
 }).$mount("#app");
 
 if (router.currentRoute.name !== "Login") {
-    router.replace("/login");
+    router.replace("/");
 }

@@ -68,7 +68,7 @@ export default {
         return {
             drawer: false,
             items: [
-                { title: "Home", route: "/", icon: "mdi-home" },
+                { title: "Home", route: "/home", icon: "mdi-home" },
                 { title: "Players", route: "/players", icon: "mdi-account" },
                 { title: "Audit Logs", route: "/logs", icon: "mdi-folder-search" }
             ],
@@ -76,7 +76,7 @@ export default {
     },
     methods: {
         logout() {
-            this.$router.push("/login");
+            this.$router.push("/");
         },
         isHomePage() {
             return this.$router.currentRoute.name == 'Home';
