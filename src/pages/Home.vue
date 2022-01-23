@@ -19,6 +19,7 @@
                     :list="waitingList"
                     group="people"
                     @change="sync"
+                    :disabled="!isSuperadmin"
                 >
                     <div
                         class="list-group-item"
@@ -412,6 +413,9 @@ export default {
         },
         hasPendingEvent() {
             return this.$root.event !== '';
+        },
+        isSuperadmin() {
+            return this.$root.superadmin;
         }
     },
 };

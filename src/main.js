@@ -20,7 +20,7 @@ new Vue({
             roomcode: '',
             username: '',
             event: '',
-            version: '1.0.1.0',
+            version: '1.0.2.0',
             superadmin: false
         };
     },
@@ -32,5 +32,5 @@ new Vue({
 }).$mount("#app");
 
 if (router.currentRoute.name !== "Login") {
-    router.replace("/login");
+    router.replace("/");
 }
