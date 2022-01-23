@@ -98,7 +98,7 @@ export default {
             if (this.validRoomCodes.includes(this.roomcode)) {
                 this.$root.username = this.username;
                 this.$root.roomcode = this.roomcode;
-                this.$router.push("/");
+                this.$router.push("/home");
             } else {
                 this.log('Invalid room code.');
                 this.invalidRoomcode = false;
